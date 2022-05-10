@@ -1,6 +1,6 @@
 {
-  "homepage": "https://robscalesdev.github.io/app-name",
-  "name": "mern-template",
+  "homepage": "https://robscalesdev.github.io/netflix-clone",
+  "name": "netflix-clone",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
