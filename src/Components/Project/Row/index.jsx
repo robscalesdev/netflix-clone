@@ -17,7 +17,7 @@ const Row = ({ genre, rowNum }) => {
 
   const dispatch = useDispatch()
 
-  const defaultImage = 'https://techcrunch.com/wp-content/uploads/2022/04/Stranger_Things__The_Experience.jpg'
+  // const defaultImage = 'https://techcrunch.com/wp-content/uploads/2022/04/Stranger_Things__The_Experience.jpg'
 
   // console.log('Comedy' in moviesAPI)
   const axiosCall = new Promise((resolve, reject) => {
@@ -27,9 +27,9 @@ const Row = ({ genre, rowNum }) => {
   useEffect(() => {
     axiosCall
       .then(data => {
-        // console.log(data)
         dispatch(setMovies(data))
       })
+  // eslint-disable-next-line
   }, [])
   
   const handleExpand = (e, i) => {
@@ -39,7 +39,6 @@ const Row = ({ genre, rowNum }) => {
       isOpen: true
     }))
 
-    // console.log(i)
     dispatch(selectMovie(movies[i]))
 
   }

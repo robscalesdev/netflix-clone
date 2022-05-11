@@ -1,7 +1,9 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
+import { BsFillPlayFill } from 'react-icons/bs'
 
 export const BannerContainer = styled.div`
-  height: max(70vh, 700px);
+  height: max(70vh, 30rem);
   width: 100%;
   display: flex;
   justify-content: flex-start;
@@ -105,6 +107,24 @@ export const DescriptionWrapper = styled.div`
   @media screen and (max-width: 700px) {
     display: none;
   }
+`
+
+export const PlayMovieButton = styled.div`
+  padding: 0.5rem 1rem 0.5rem 2.2rem;
+  width: 3rem;
+  text-decoration: none;
+  color: #050505;
+  background: #888;
+  font-size: 1.2rem;
+  border-radius: 3px;
+  position: relative;
+  cursor: pointer;
+`
+
+export const PlayIcon = styled(BsFillPlayFill)`
+  position: absolute;
+  top: 0.65rem;
+  left: 0.9rem;
 `
 
 export const Description = styled.p``

@@ -1,5 +1,7 @@
-import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import React from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { openModal } from '../../../redux/actions/modalActions'
+import { selectMovie } from '../../../redux/actions/movieActions'
 import { 
   BannerContentWrapper,
   BlurLeft,
@@ -16,17 +18,27 @@ import {
   Seasons,
   Details,
   AboutWrapper,
-  // Artists,
-  // Genre,
   DescriptionWrapper,
-  Description
+  Description,
+  PlayMovieButton,
+  PlayIcon
 } from './BannerElements'
 
 const Banner = () => {
 
   const moviesLength = useSelector(state => state.moviesState['Trending'].length)
-  const movie = useSelector(state => state.moviesState['Trending'][Math.floor(Math.random() * moviesLength)]) || { title: '', image: '', video: '' }
-  const [showDesc, setShowDesc] = useState(false)
+  // const movie = useSelector(state => state.moviesState['Trending'][Math.floor(Math.random() * moviesLength)]) || { title: '', image: '', video: '' }
+  const movie = useSelector(state => state.moviesState['Trending'][8]) || { title: '', image: '', video: '' }
+
+  const dispatch = useDispatch()
+
+  const handleExpand = () => {
+    dispatch(openModal({
+      isOpen: true
+    }))
+
+    dispatch(selectMovie(movie))
+  }
 
   return (
     <BannerContainer image={movie.image}>
@@ -54,7 +66,7 @@ const Banner = () => {
           </Description>
         </DescriptionWrapper>
         <AboutWrapper>
-          <button>Play Movie</button>
+          <PlayMovieButton onClick={handleExpand}><PlayIcon /> Play</PlayMovieButton>
           {/* <button onClick={() => setShowDesc(!showDesc)}>Details</button> */}
         </AboutWrapper>
       </BannerContentWrapper>

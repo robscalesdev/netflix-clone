@@ -1,14 +1,13 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+// import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { MovieContainer, MovieElement } from './MovieElements'
 
 const Movie = () => {
 
-  const {movieName} = useParams()
+  // const {movieName} = useParams()
 
   const movie = useSelector(state => state.movieState)
-  console.log(movie)
 
   return (
     <MovieContainer>

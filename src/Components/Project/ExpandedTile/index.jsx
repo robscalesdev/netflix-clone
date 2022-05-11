@@ -4,6 +4,8 @@ import {
   BottomWrapper,
   ButtonWrapper,
   ClosePlayer,
+  DislikeButton,
+  LikeButton,
   LikeDislike,
   MovieLink,
   MovieTitle,
@@ -29,7 +31,27 @@ const ExpandedTile = ({ handleClose }) => {
   const [tileWidth] = useState(250)
   const [genreCount] = useState(5)
 
+  // -1 disliked, 0 neutral, +1 liked
+  const [liked, setLiked] = useState(0)
+  console.log(liked)
+
   const movie = useSelector(state => state.movieState) || {}
+
+  const handleLikeClick = () => {
+    if (liked < 1) {
+      setLiked(1)
+    } else {
+      setLiked(0)
+    }
+  }
+
+  const handleDislikeClick = () => {
+    if (liked > -1) {
+      setLiked(-1)
+    } else {
+      setLiked(0)
+    }
+  }
 
   return (
     <>
@@ -56,15 +78,15 @@ const ExpandedTile = ({ handleClose }) => {
                 />
               <BottomWrapper>
                 <MovieLink to={`/video/${movie.title.split(' ').join('-')}`}>
-                  <PlayIcon /> Play Video
+                  <PlayIcon /> Play
                 </MovieLink>
                 <ButtonWrapper>
-                  <LikeDislike>
+                  <LikeButton liked={liked} onClick={handleLikeClick}>
                     <LikeIcon />
-                  </LikeDislike>
-                  <LikeDislike>
+                  </LikeButton>
+                  <DislikeButton liked={liked} onClick={handleDislikeClick}>
                     <DislikeIcon />
-                  </LikeDislike>
+                  </DislikeButton>
                 </ButtonWrapper>
               </BottomWrapper>
         </TileExpanded>

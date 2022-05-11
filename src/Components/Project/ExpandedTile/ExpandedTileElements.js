@@ -16,7 +16,6 @@ export const TileWrapper = styled.div`
   height: 100vh;
   z-index: 20;
   display: flex;
-  /* align-items: center; */
   justify-content: center;
   padding-top: 5%;
   visibility: hidden;
@@ -63,13 +62,22 @@ export const LikeDislike = styled.div`
   margin-left: 1rem;
   cursor: pointer;
   color: #ddd;
-  /* background-color: #333; */
   background-image: linear-gradient(80deg, #454545, #353535);
   padding: 0.5rem;
   border: solid;
   border-width: 1px;
   border-color: #111;
   border-radius: 5px;
+`
+
+export const LikeButton = styled(LikeDislike)`
+  color: ${state => (state.liked === 1 ? '#aaf' : (state.liked === -1 ? '#444' : '#ddd' ))};
+  background-image: ${state => (state.liked === 1 ? 'linear-gradient(80deg, #555, #666)' : (state.liked === -1 ? 'linear-gradient(80deg, #333, #111)' : 'linear-gradient(80deg, #454545, #353535)' ))};
+`
+
+export const DislikeButton = styled(LikeDislike)`
+    color: ${state => (state.liked === -1 ? '#aaf' : (state.liked === 1 ? '#444' : '#ddd' ))};
+  background-image: ${state => (state.liked === -1 ? 'linear-gradient(80deg, #555, #666)' : (state.liked === 1 ? 'linear-gradient(80deg, #333, #111)' : 'linear-gradient(80deg, #454545, #353535)' ))};
 `
 
 export const MovieTitle = styled.h1`

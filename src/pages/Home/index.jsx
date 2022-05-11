@@ -8,11 +8,10 @@ import { setGenres } from '../../redux/actions/genreActions'
 import { HomeContainer,
   MoviesContainer
 } from './HomeElements'
-import axios from 'axios'
+// import axios from 'axios'
 
 const Home = () => {
 
-  // const [genres] = useState(["row1", "row2", "row3", "row4", "row5", "row6"])
   const isModalOpen = useSelector(state => state.modalState.isOpen)
 
   const genres = useSelector(state => state.genresState.genres) 
